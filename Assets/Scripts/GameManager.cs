@@ -7,12 +7,13 @@ public class NinjaGameManager : MonoBehaviour
 
     [Header("UI")]
     public TextMeshPro scoreText;
-    public TextMeshPro livesText;
+    //public TextMeshPro livesText;
     public TextMeshPro timerText;
 
     [Header("Settings")]
     public float gameDuration = 60f;
-    public int maxLives = 3;
+    public int bombPenalty = 50;
+    //public int maxLives = 3;
 
     private int score = 0;
     private int lives;
@@ -23,7 +24,7 @@ public class NinjaGameManager : MonoBehaviour
 
     void Start()
     {
-        lives = maxLives;
+        //lives = maxLives;
         timeRemaining = gameDuration;
         gameRunning = true;
         UpdateUI();
@@ -45,17 +46,23 @@ public class NinjaGameManager : MonoBehaviour
         UpdateUI();
     }
 
-    public void LoseLife()
-    {
-        lives--;
-        UpdateUI();
-        if (lives <= 0) EndGame();
-    }
+    //public void LoseLife()
+    //{
+        //lives--;
+        //UpdateUI();
+        //if (lives <= 0) EndGame();
+    //}
 
+    public void BombHit()
+    {
+        score = Mathf.Max(0, score - bombPenalty);
+        UpdateUI();
+    }
+    
     void UpdateUI()
     {
         scoreText.text = "Score : " + score;
-        livesText.text = "Vies : " + lives;
+        //livesText.text = "Vies : " + lives;
     }
 
     void EndGame()
@@ -63,5 +70,15 @@ public class NinjaGameManager : MonoBehaviour
         gameRunning = false;
         scoreText.text = "Fini ! Score : " + score;
         FindFirstObjectByType<FruitSpawner>().StopSpawning();
+    }
+
+    public void ResetGame()
+    {
+        score = 0;
+        timeRemaining = gameDuration;
+        gameRunning = true;
+        FindFirstObjectByType<FruitSpawner>().StopSpawning();
+        FindFirstObjectByType<FruitSpawner>().StartSpawning();
+        UpdateUI();
     }
 }

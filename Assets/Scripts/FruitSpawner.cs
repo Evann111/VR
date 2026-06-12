@@ -40,6 +40,12 @@ public class FruitSpawner : MonoBehaviour
         Destroy(fruit, 4f);
     }
 
+    public void StartSpawning()
+    {
+        spawning = true;
+        InvokeRepeating(nameof(SpawnFruit), 1f, spawnInterval);
+    }
+
     public void StopSpawning()
     {
         spawning = false;

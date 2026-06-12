@@ -27,7 +27,7 @@ public class Fruit : MonoBehaviour
                 Instantiate(bombEffect, transform.position, Quaternion.identity);
             if (bombSound != null)
                 AudioSource.PlayClipAtPoint(bombSound, transform.position);
-            NinjaGameManager.Instance.LoseLife();
+            NinjaGameManager.Instance.BombHit();
         }
         else
         {
