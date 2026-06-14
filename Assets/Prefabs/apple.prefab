@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 717659f85ba394d4cb50955b679615f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Fruit
-  points: 50
+  points: 30
   isBomb: 0
   sliceEffect: {fileID: 1128188833807243165, guid: 4f781ddac3c0d774d8a5c1952a48ed0c, type: 3}
   bombEffect: {fileID: 0}
